@@ -18,6 +18,11 @@ router.post("/register", async (req, res) => {
         return res.status(400).json({ message:"All fields are required" });
     }
 
+    const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if (!isValidEmail) {
+      return res.status(400).json({ message: "Invalid email format" });
+    }
+
     if(password.length < 6){
         return res.status(400).json({ message:"Password should be at least 6 charecters long" });
     }
