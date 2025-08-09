@@ -66,7 +66,7 @@ router.get("/", protectRoute, async (req, res) => {
 router.get("/:id", protectRoute, async (req, res) => {
     try {
       const book = await Book.find({ _id: req.params.id }).sort({ createdAt: -1 });
-      res.json(books);
+      res.json(book);
 
     } catch (error) {
         console.error("Get user books error", error.message);
